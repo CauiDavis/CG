@@ -11,7 +11,7 @@
 GLuint idTextura;
 GLdouble rotX, rotY;
 
-void loadBMP(char *filename)
+void loadBMP(const char *filename)
 {
 
 	unsigned int width, height;
