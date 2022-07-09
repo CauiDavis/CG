@@ -89,61 +89,61 @@ void drawCube()
 		// Face frente
 		glTexCoord2f(0.0f, 0.0f);
 		glVertex3f(-1.0f, -1.0f, 1.0f);
-		glTexCoord2f(1.0f, 0.0f);
+		glTexCoord2f(0.5f, 0.0f);
 		glVertex3f(1.0f, -1.0f, 1.0f);
-		glTexCoord2f(1.0f, 1.0f);
+		glTexCoord2f(0.5f, 0.35f);
 		glVertex3f(1.0f, 1.0f, 1.0f);
-		glTexCoord2f(0.0f, 1.0f);
+		glTexCoord2f(0.0f, 0.35f);
 		glVertex3f(-1.0f, 1.0f, 1.0f);
 
 		// Face fundo
-		glTexCoord2f(1.0f, 0.0f);
+		glTexCoord2f(0.0f, 0.7f);
 		glVertex3f(-1.0f, -1.0f, -1.0f);
-		glTexCoord2f(0.0f, 0.0f);
-		glVertex3f(1.0f, -1.0f, -1.0f);
-		glTexCoord2f(0.0f, 1.0f);
+		glTexCoord2f(0.5f, 0.7f);
+		glVertex3f(1.0, -1.0f, -1.0f);
+		glTexCoord2f(0.5f, 1.0f);
 		glVertex3f(1.0f, 1.0f, -1.0f);
-		glTexCoord2f(1.0f, 1.0f);
+		glTexCoord2f(0.0f, 1.0f);
 		glVertex3f(-1.0f, 1.0f, -1.0f);
 
 		// Face superior
-		glTexCoord2f(0.0f, 0.0f);
+		glTexCoord2f(0.0f, 0.35f);
 		glVertex3f(-1.0f, 1.0f, 1.0f);
-		glTexCoord2f(1.0f, 0.0f);
+		glTexCoord2f(0.5f, 0.35f);
 		glVertex3f(1.0f, 1.0f, 1.0f);
-		glTexCoord2f(1.0f, 1.0f);
+		glTexCoord2f(0.5f, 0.7f);
 		glVertex3f(1.0f, 1.0f, -1.0f);
-		glTexCoord2f(0.0f, 1.0f);
+		glTexCoord2f(0.0f, 0.7f);
 		glVertex3f(-1.0f, 1.0f, -1.0f);
 
 		// Face inferior
-		glTexCoord2f(1.0f, 1.0f);
+		glTexCoord2f(0.5f, 0.35f);
 		glVertex3f(1.0f, -1.0f, 1.0f);
-		glTexCoord2f(0.0f, 1.0f);
+		glTexCoord2f(0.5f, 0.7f);
 		glVertex3f(-1.0f, -1.0f, 1.0f);
-		glTexCoord2f(0.0f, 0.0f);
+		glTexCoord2f(1.0f, 0.7f);
 		glVertex3f(-1.0f, -1.0f, -1.0f);
-		glTexCoord2f(1.0f, 0.0f);
+		glTexCoord2f(1.0f, 0.35f);
 		glVertex3f(1.0f, -1.0f, -1.0f);
 
 		// Face lateral direita
-		glTexCoord2f(1.0f, 0.0f);
+		glTexCoord2f(0.5f, 0.0f);
 		glVertex3f(1.0f, -1.0f, -1.0f);
-		glTexCoord2f(1.0f, 1.0f);
+		glTexCoord2f(0.5f, 0.35f);
 		glVertex3f(1.0f, 1.0f, -1.0f);
-		glTexCoord2f(0.0f, 1.0f);
+		glTexCoord2f(1.0f, 0.35f);
 		glVertex3f(1.0f, 1.0f, 1.0f);
-		glTexCoord2f(0.0f, 0.0f);
+		glTexCoord2f(1.0f, 0.0f);
 		glVertex3f(1.0f, -1.0f, 1.0f);
 
 		// Face lateral esquerda
-		glTexCoord2f(0.0f, 0.0f);
+		glTexCoord2f(0.5f, 0.7f);
 		glVertex3f(-1.0f, -1.0f, -1.0f);
-		glTexCoord2f(1.0f, 0.0f);
+		glTexCoord2f(0.5f, 1.0f);
 		glVertex3f(-1.0f, -1.0f, 1.0f);
 		glTexCoord2f(1.0f, 1.0f);
 		glVertex3f(-1.0f, 1.0f, 1.0f);
-		glTexCoord2f(0.0f, 1.0f);
+		glTexCoord2f(1.0f, 0.7f);
 		glVertex3f(-1.0f, 1.0f, -1.0f);
 	}
 	glEnd();
@@ -169,7 +169,7 @@ void init(void)
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glEnable(GL_DEPTH_TEST);
-	loadBMP("08-Textura/imagem.bmp");
+	loadBMP("08-Textura/dado.bmp");
 }
 
 void resize(GLsizei w, GLsizei h)
