@@ -169,7 +169,7 @@ void init(void)
 {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glEnable(GL_DEPTH_TEST);
-	loadBMP("08-Textura/dado.bmp");
+	loadBMP("08-Texturas/dado.bmp");
 }
 
 void resize(GLsizei w, GLsizei h)
