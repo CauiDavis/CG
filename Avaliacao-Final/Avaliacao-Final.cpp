@@ -11,6 +11,7 @@
 #include <string.h>
 
 GLfloat angleX, angleY;
+GLint terra, marte, lua, sol;
 
 typedef struct vertex {
 	float x;
@@ -161,21 +162,7 @@ GLuint loadTGA(const char *filename) {
 
     return idTextura;
 }
-
-void displayPersp(void) {
-	glMatrixMode(GL_MODELVIEW);
-
-	glLoadIdentity();
-	gluLookAt(5, 0, 0, 0, 0, 0, 0, 1, 0);
-
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	// glColor3f(0.0f, 0.5f, 0.0f);
-
-	glPushMatrix();
-	glRotatef(angleX,1,0,0);
-	glRotatef(angleY,0,1,0);
-
+ void rendersphere(){
 	glBegin(GL_TRIANGLES);
 	for (int i = 0; i < faces.size(); ++i) {
 		vertex *v1 = &vertices[faces[i].v1 - 1];
@@ -203,9 +190,53 @@ void displayPersp(void) {
 		glVertex3f(v3->x, v3->y, v3->z);
 	}
 	glEnd();
+}
+void displayPersp(void) {
+	glMatrixMode(GL_MODELVIEW);
 
-	glPopMatrix();
-	
+	glLoadIdentity();
+	gluLookAt(20, 0, 0, 0, 0, 0, 0, 1, 0);
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// glColor3f(0.0f, 0.5f, 0.0f);
+    
+	//sol
+	glPushMatrix();{
+		glScalef(3.0f, 3.0f, 3.0f);
+		glTranslatef(0.0f,0.0f,-2.0f);
+		glBindTexture(GL_TEXTURE_2D, sol);
+		rendersphere();
+		glRotatef(angleX,1,0,0);
+	    glRotatef(angleY,0,1,0);
+		//terra
+	    glPushMatrix();{
+		glScalef(0.5f, 0.5f, 0.5f );
+		glTranslatef(0.0f,0.0f,4.0);
+	    glRotatef(angleX,1,0,0);
+	    glRotatef(angleY,0,1,0);
+	    glBindTexture(GL_TEXTURE_2D, terra);
+	    rendersphere();
+	    //lua
+	      glPushMatrix();{
+		  glScalef(0.2f,0.2f,0.2f);
+		  glTranslatef(0.0f,0.0f,7.0f);
+		  glRotatef(angleX,1,0,0);
+	      glRotatef(angleY,0,1,0);
+		  glBindTexture(GL_TEXTURE_2D, lua);
+		  rendersphere();
+	    } glPopMatrix();
+	} glPopMatrix();
+	//marte
+	glPushMatrix();{
+		glScalef(0.5f, 0.5f, 0.5f );
+		glTranslatef(0.0f,0.0f,7.0f);
+		glRotatef(angleX,1,0,0);
+	    glRotatef(angleY,0,1,0);
+		glBindTexture(GL_TEXTURE_2D, marte);
+		rendersphere();
+	} glPopMatrix();
+	} glPopMatrix();
 	glutSwapBuffers();
 }
 
@@ -221,7 +252,7 @@ void init() {
 
 	GLint especMaterial = 50;
 
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	glShadeModel(GL_SMOOTH);
 
@@ -240,7 +271,10 @@ void init() {
 	glEnable(GL_DEPTH_TEST);
 
 	loadObj("sphere.obj");
-	loadTGA("earth.tga");
+	terra =  loadTGA("earth.tga");
+	marte = loadTGA("mars.tga");
+	lua = loadTGA("moon.tga");
+	sol = loadTGA("sun.tga");
 }
 
 void resize(GLsizei w, GLsizei h) {

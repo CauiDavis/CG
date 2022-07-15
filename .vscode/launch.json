@@ -10,10 +10,10 @@
             "request": "launch",
             "program": "insira o nome do programa, por exemplo ${workspaceFolder}/a.out",
             "args": [],
-            "stopAtEntry": false,
+            "stopAtEntry": true,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "pipeTransport": {
                 "debuggerPath": "/usr/bin/gdb",
                 "pipeProgram": "/usr/bin/ssh",
