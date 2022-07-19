@@ -67,6 +67,7 @@ void loadObj(const char *filename) {
 }
 
 //Recebe o arquivo de imagem e retorna o id da textura
+
 GLuint loadTGA(const char *filename) {
 
     static GLubyte TGA_TYPE_HEADER[8] = {0, 0, 2, 0, 0, 0, 0, 0};
@@ -195,7 +196,7 @@ void displayPersp(void) {
 	glMatrixMode(GL_MODELVIEW);
 
 	glLoadIdentity();
-	gluLookAt(30, 0, 0, 0, 0, 0, 0, 1, 0);
+	gluLookAt(90, 0, 0, 0, 0, 0, 0, 1, 0);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -212,13 +213,21 @@ void displayPersp(void) {
 		//mercurio
 		glPushMatrix();{
 			glScalef(0.1f, 0.1f, 0.1f );
+			glTranslatef(0.0f,0.0f,13.0f);
+			glBindTexture(GL_TEXTURE_2D,mercurio);
+			rendersphere();
+		} glPopMatrix();
+		//venus
+		glPushMatrix(); {
+			glScalef(0.3f,0.3f,0.3f);
 			glTranslatef(0.0f,0.0f,7.0f);
-			rendersphere ();
+			glBindTexture(GL_TEXTURE_2D,venus);
+			rendersphere();
 		} glPopMatrix();
 		//terra
 	    glPushMatrix();{
 		glScalef(0.5f, 0.5f, 0.5f );
-		glTranslatef(0.0f,0.0f,10.0);
+		glTranslatef(0.0f,0.0f,7.0);
 	    glRotatef(angleX,1,0,0);
 	    glRotatef(angleY,0,1,0);
 	    glBindTexture(GL_TEXTURE_2D, terra);
@@ -226,7 +235,7 @@ void displayPersp(void) {
 	    //lua
 	      glPushMatrix();{
 		  glScalef(0.2f,0.2f,0.2f);
-		  glTranslatef(0.0f,0.0f,13.0f);
+		  glTranslatef(0.0f,0.0f,6.0f);
 		  glRotatef(angleX,1,0,0);
 	      glRotatef(angleY,0,1,0);
 		  glBindTexture(GL_TEXTURE_2D, lua);
@@ -236,12 +245,40 @@ void displayPersp(void) {
 	//marte
 	glPushMatrix();{
 		glScalef(0.5f, 0.5f, 0.5f );
-		glTranslatef(0.0f,0.0f,7.0f);
+		glTranslatef(0.0f,0.0f,10.0f);
 		glRotatef(angleX,1,0,0);
 	    glRotatef(angleY,0,1,0);
 		glBindTexture(GL_TEXTURE_2D, marte);
 		rendersphere();
 	} glPopMatrix();
+	//jupiter
+	glPushMatrix(); {
+		glScalef(1.5f,1.5f,1.5f);
+		glTranslatef(0.0f,0.0f,5.0f);
+		glBindTexture(GL_TEXTURE_2D,jupiter);
+		rendersphere();
+	} glPopMatrix();
+	//saturno 
+	glPushMatrix(); {
+		glScalef(1.3f,1.3f,1.3f);
+		glTranslatef(0.0f,0.0f,8.5f);
+		glBindTexture(GL_TEXTURE_2D,saturno);
+		rendersphere();
+	}  glPopMatrix();
+	//uranus
+	glPushMatrix(); {
+		glScalef(0.7f,0.7f, 0.7f);
+		glTranslatef(0.0f,0.0f,19.5f);
+		glBindTexture(GL_TEXTURE_2D,uranus);
+		rendersphere();
+	}  glPopMatrix();
+	//netuno
+	glPushMatrix(); {
+		glScalef(0.6f,0.6f, 0.6f);
+		glTranslatef(0.0f,0.0f,25.5f);
+		glBindTexture(GL_TEXTURE_2D,netuno);
+		rendersphere();
+	}  glPopMatrix();
 	} glPopMatrix();
 	glutSwapBuffers();
 }
@@ -283,6 +320,10 @@ void init() {
 	sol = loadTGA("sun.tga");
 	mercurio = loadTGA("mercury.tga");
 	venus = loadTGA("venus.tga");
+	jupiter = loadTGA("jupiter.tga");
+	saturno = loadTGA("saturn.tga");
+	uranus = loadTGA("uranus.tga");
+	netuno = loadTGA("neptune.tga");
 }
 
 void resize(GLsizei w, GLsizei h) {
@@ -295,7 +336,7 @@ void resize(GLsizei w, GLsizei h) {
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(90, fAspect, 0.1, 1000);
+	gluPerspective(60, fAspect, 0.1, 1000);
 }
 
 void keyboard(int key, int x, int y) {
