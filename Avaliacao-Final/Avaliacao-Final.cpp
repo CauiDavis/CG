@@ -11,7 +11,7 @@
 #include <string.h>
 
 GLfloat angleX, angleY;
-GLint terra, marte, lua, sol;
+GLint terra, marte, lua, sol,mercurio,venus,jupiter,saturno,uranus,netuno;
 
 typedef struct vertex {
 	float x;
@@ -195,7 +195,7 @@ void displayPersp(void) {
 	glMatrixMode(GL_MODELVIEW);
 
 	glLoadIdentity();
-	gluLookAt(20, 0, 0, 0, 0, 0, 0, 1, 0);
+	gluLookAt(30, 0, 0, 0, 0, 0, 0, 1, 0);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -209,10 +209,16 @@ void displayPersp(void) {
 		rendersphere();
 		glRotatef(angleX,1,0,0);
 	    glRotatef(angleY,0,1,0);
+		//mercurio
+		glPushMatrix();{
+			glScalef(0.1f, 0.1f, 0.1f );
+			glTranslatef(0.0f,0.0f,7.0f);
+			rendersphere ();
+		} glPopMatrix();
 		//terra
 	    glPushMatrix();{
 		glScalef(0.5f, 0.5f, 0.5f );
-		glTranslatef(0.0f,0.0f,4.0);
+		glTranslatef(0.0f,0.0f,10.0);
 	    glRotatef(angleX,1,0,0);
 	    glRotatef(angleY,0,1,0);
 	    glBindTexture(GL_TEXTURE_2D, terra);
@@ -220,7 +226,7 @@ void displayPersp(void) {
 	    //lua
 	      glPushMatrix();{
 		  glScalef(0.2f,0.2f,0.2f);
-		  glTranslatef(0.0f,0.0f,7.0f);
+		  glTranslatef(0.0f,0.0f,13.0f);
 		  glRotatef(angleX,1,0,0);
 	      glRotatef(angleY,0,1,0);
 		  glBindTexture(GL_TEXTURE_2D, lua);
@@ -275,6 +281,8 @@ void init() {
 	marte = loadTGA("mars.tga");
 	lua = loadTGA("moon.tga");
 	sol = loadTGA("sun.tga");
+	mercurio = loadTGA("mercury.tga");
+	venus = loadTGA("venus.tga");
 }
 
 void resize(GLsizei w, GLsizei h) {
