@@ -246,7 +246,7 @@ void displayPersp(void)
 			glTranslatef(-1.2, 0, -0.6);
 			glRotatef(180,0, 1, 0);
 			glRotatef(rotroda,0, 1, 0);
-			glRotatef(acelerar,0, 0, 1);
+			glRotatef(acelerar,0, 0, -1);
 			renderModel(tyre_front);
 		} glPopMatrix();
 		//roda traseira 1
@@ -259,7 +259,7 @@ void displayPersp(void)
 		glPushMatrix(); {
 			glTranslatef(2.0, 0, -0.65);
 			glRotatef(180,0, 1, 0);
-			glRotatef(acelerar,0, 0, 1);
+			glRotatef(acelerar,0, 0, -1);
 			renderModel(tyre_back);
 		} glPopMatrix();
 	} glPopMatrix();
