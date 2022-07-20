@@ -273,7 +273,7 @@ void init()
 	angleX = 0;
 	angleY = 90;
 
-	GLfloat posicaoLuz[4] = {0.0, 20.0, 0.0, 1.0};
+	GLfloat posicaoLuz[4] = {0.0, 3.0, 0.0, 1.0};
 	GLfloat luzAmbiente[4] = {0.20, 0.20, 0.20, 1.0};
 	GLfloat luzDifusa[4] = {0.5, 0.5, 0.5, 1.0};
 	GLfloat luzEspecular[4] = {0.9, 0.9, 0.9, 1.0};
